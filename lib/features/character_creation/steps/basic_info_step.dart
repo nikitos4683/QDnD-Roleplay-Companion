@@ -637,7 +637,7 @@ class _BasicInfoStepState extends State<BasicInfoStep> {
             },
             emptySelectionAllowed: true,
             showSelectedIcon: false,
-            style: ButtonStyle(
+            style: const ButtonStyle(
               visualDensity: VisualDensity.compact,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),

@@ -13,7 +13,7 @@ class FeaturesStep extends StatefulWidget {
   final Function(String featureId, String optionId) onOptionSelected;
 
   const FeaturesStep({
-    Key? key,
+    super.key,
     required this.newFeatures,
     required this.newSpellSlots,
     required this.oldSpellSlots,
@@ -21,7 +21,7 @@ class FeaturesStep extends StatefulWidget {
     required this.classData,
     required this.nextLevel,
     required this.onOptionSelected,
-  }) : super(key: key);
+  });
 
   @override
   State<FeaturesStep> createState() => _FeaturesStepState();
@@ -129,7 +129,7 @@ class _FeaturesStepState extends State<FeaturesStep> {
                       return _buildFightingStyleChoice(context, feature, l10n);
                     }
                     return _buildFeatureCard(context, feature);
-                  }).toList(),
+                  }),
                 ],
               ],
             ),
@@ -205,10 +205,10 @@ class _FeaturesStepState extends State<FeaturesStep> {
               },
               title: Text(style['name']!, style: const TextStyle(fontWeight: FontWeight.bold)),
               subtitle: Text(style['desc']!),
-              secondary: Icon(Icons.sports_martial_arts),
+              secondary: const Icon(Icons.sports_martial_arts),
             ),
           );
-        }).toList(),
+        }),
         const SizedBox(height: 16),
       ],
     );

@@ -380,7 +380,7 @@ class _DiceRollerModalState extends State<DiceRollerModal> with TickerProviderSt
                       style: ButtonStyle(
                         visualDensity: VisualDensity.standard,
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 0)),
+                        padding: WidgetStateProperty.all(const EdgeInsets.symmetric(vertical: 0)),
                       ),
                     ),
                   ),
@@ -484,12 +484,16 @@ class DiceShapePainter extends CustomPainter {
     switch (type) {
       case DiceType.d4:
         final adjustedCenter = Offset(center.dx, center.dy + radius * 0.2);
-        final angle = -pi / 2; 
+        const angle = -pi / 2; 
         for (int i = 0; i < 3; i++) {
           final theta = angle + (i * 2 * pi / 3);
           final x = adjustedCenter.dx + radius * cos(theta);
           final y = adjustedCenter.dy + radius * sin(theta);
-          if (i == 0) path.moveTo(x, y); else path.lineTo(x, y);
+          if (i == 0) {
+            path.moveTo(x, y);
+          } else {
+            path.lineTo(x, y);
+          }
         }
         path.close();
         break;
@@ -528,23 +532,31 @@ class DiceShapePainter extends CustomPainter {
         return;
 
       case DiceType.d12:
-        final angle = -pi / 2;
+        const angle = -pi / 2;
         for (int i = 0; i < 5; i++) {
           final theta = angle + (i * 2 * pi / 5);
           final x = center.dx + radius * cos(theta);
           final y = center.dy + radius * sin(theta);
-          if (i == 0) path.moveTo(x, y); else path.lineTo(x, y);
+          if (i == 0) {
+            path.moveTo(x, y);
+          } else {
+            path.lineTo(x, y);
+          }
         }
         path.close();
         break;
 
       case DiceType.d20:
-        final angle = pi / 6; 
+        const angle = pi / 6; 
         for (int i = 0; i < 6; i++) {
           final theta = angle + (i * 2 * pi / 6);
           final x = center.dx + radius * cos(theta);
           final y = center.dy + radius * sin(theta);
-          if (i == 0) path.moveTo(x, y); else path.lineTo(x, y);
+          if (i == 0) {
+            path.moveTo(x, y);
+          } else {
+            path.lineTo(x, y);
+          }
         }
         path.close();
         break;

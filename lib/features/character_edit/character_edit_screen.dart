@@ -139,7 +139,7 @@ class _CharacterEditScreenState extends State<CharacterEditScreen> {
         Navigator.of(context).pop(true);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Character updated successfully'),
+            content: const Text('Character updated successfully'),
             backgroundColor: Theme.of(context).colorScheme.primary,
             behavior: SnackBarBehavior.floating,
           ),

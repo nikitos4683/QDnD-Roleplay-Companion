@@ -154,7 +154,7 @@ class _NoteEditorDialogState extends State<NoteEditorDialog> {
 
               // Category Dropdown
               DropdownButtonFormField<NoteCategory>(
-                value: _selectedCategory,
+                initialValue: _selectedCategory,
                 decoration: InputDecoration(
                   labelText: locale == 'ru' ? 'Категория' : 'Category',
                   border: const OutlineInputBorder(),

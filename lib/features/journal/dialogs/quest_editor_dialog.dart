@@ -128,7 +128,7 @@ class _QuestEditorDialogState extends State<QuestEditorDialog> {
 
               // Status Dropdown
               DropdownButtonFormField<QuestStatus>(
-                value: _status,
+                initialValue: _status,
                 decoration: InputDecoration(
                   labelText: locale == 'ru' ? 'Статус' : 'Status',
                   border: const OutlineInputBorder(),

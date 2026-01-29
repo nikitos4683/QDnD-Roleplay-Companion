@@ -78,8 +78,9 @@ class FC5Parser {
           final properties = node.findElements('property').firstOrNull?.innerText ?? '';
           
           DamageType dmgType = DamageType.slashing;
-          if (dmgTypeStr.contains('piercing')) dmgType = DamageType.piercing;
-          else if (dmgTypeStr.contains('bludgeoning')) dmgType = DamageType.bludgeoning;
+          if (dmgTypeStr.contains('piercing')) {
+            dmgType = DamageType.piercing;
+          } else if (dmgTypeStr.contains('bludgeoning')) dmgType = DamageType.bludgeoning;
           else if (dmgTypeStr.contains('fire')) dmgType = DamageType.fire;
           else if (dmgTypeStr.contains('cold')) dmgType = DamageType.cold;
           else if (dmgTypeStr.contains('lightning')) dmgType = DamageType.lightning;
@@ -369,7 +370,7 @@ class FC5Parser {
 
     if (classNode != null) {
       try {
-        final slotsText = classNode!.findElements('slots').first.innerText;
+        final slotsText = classNode.findElements('slots').first.innerText;
         final slotsList = slotsText
             .split(',')
             .where((s) => s.isNotEmpty)
@@ -381,7 +382,7 @@ class FC5Parser {
           maxSpellSlots[i - 1] = slotsList[i];
         }
 
-        final currentSlotsText = classNode!.findElements('slotsCurrent').first.innerText;
+        final currentSlotsText = classNode.findElements('slotsCurrent').first.innerText;
         final currentSlotsList = currentSlotsText
             .split(',')
             .where((s) => s.isNotEmpty)
@@ -403,7 +404,7 @@ class FC5Parser {
     List<String> proficientSkills = [];
     if (classNode != null) {
       try {
-        final proficiencies = classNode!.findAllElements('proficiency');
+        final proficiencies = classNode.findAllElements('proficiency');
         for (var prof in proficiencies) {
           proficientSkills.add(prof.innerText);
         }

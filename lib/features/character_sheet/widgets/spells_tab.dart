@@ -235,13 +235,13 @@ class _SpellsTabState extends State<SpellsTab> {
           children: [
             if (resourceFeatures.isNotEmpty) ...[
               _buildSectionHeader(l10n.resources.toUpperCase()),
-              ...resourceFeatures.map((feature) => _buildResourceFeature(feature, locale)).toList(),
+              ...resourceFeatures.map((feature) => _buildResourceFeature(feature, locale)),
               const SizedBox(height: 16),
             ],
 
             if (activeFeatures.isNotEmpty) ...[
               _buildSectionHeader(l10n.activeAbilities.toUpperCase()),
-              ...activeFeatures.map((feature) => _buildActiveFeature(feature, locale, l10n)).toList(),
+              ...activeFeatures.map((feature) => _buildActiveFeature(feature, locale, l10n)),
               const SizedBox(height: 16),
             ],
 
@@ -261,7 +261,7 @@ class _SpellsTabState extends State<SpellsTab> {
                 ),
               ))
             else
-              ...(spellsByLevel.keys.toList()..sort()).map((level) => _buildSpellLevelGroup(level, spellsByLevel[level]!, locale, l10n)).toList(),
+              ...(spellsByLevel.keys.toList()..sort()).map((level) => _buildSpellLevelGroup(level, spellsByLevel[level]!, locale, l10n)),
 
             const SizedBox(height: 16),
 
@@ -636,7 +636,7 @@ class _SpellsTabState extends State<SpellsTab> {
                ),
              ),
            );
-        }).toList(),
+        }),
         const SizedBox(height: 8),
       ],
     );

@@ -375,7 +375,11 @@ class OverviewTab extends StatelessWidget {
     );
 
     if (confirmed == true) {
-      if (short) character.shortRest(); else character.longRest();
+      if (short) {
+        character.shortRest();
+      } else {
+        character.longRest();
+      }
       await StorageService.saveCharacter(character);
       onCharacterUpdated?.call();
       if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.restedSuccess), duration: const Duration(seconds: 2)));

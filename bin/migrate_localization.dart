@@ -147,10 +147,7 @@ bool migrateItem(Map<String, dynamic> item) {
       String? translation = coreTerms[enName];
       
       // If not found, try partial match for known patterns (e.g. "Potion of Healing")
-      if (translation == null) {
-          // Simple heuristics or just copy EN
-          translation = enName; 
-      }
+      translation ??= enName;
 
       item['nameRu'] = translation;
       changed = true;

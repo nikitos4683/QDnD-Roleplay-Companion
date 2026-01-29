@@ -287,7 +287,7 @@ class _CreateItemScreenState extends State<CreateItemScreen> {
                         Expanded(
                           flex: 1,
                           child: DropdownButtonFormField<String>(
-                            value: _selectedCurrency,
+                            initialValue: _selectedCurrency,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                               contentPadding: const EdgeInsets.symmetric(horizontal: 12),
@@ -309,14 +309,14 @@ class _CreateItemScreenState extends State<CreateItemScreen> {
                       value: _isMagical,
                       onChanged: (v) => setState(() => _isMagical = v),
                       secondary: Icon(Icons.auto_fix_high, color: _isMagical ? theme.colorScheme.primary : null),
-                      activeColor: theme.colorScheme.primary,
+                      activeThumbColor: theme.colorScheme.primary,
                     ),
                     SwitchListTile(
                       title: Text(l10n.requiresAttunement),
                       value: _requiresAttunement,
                       onChanged: (v) => setState(() => _requiresAttunement = v),
                       secondary: Icon(Icons.link, color: _requiresAttunement ? theme.colorScheme.primary : null),
-                      activeColor: theme.colorScheme.primary,
+                      activeThumbColor: theme.colorScheme.primary,
                     ),
 
                     // Dynamic Fields: Weapon
@@ -341,7 +341,7 @@ class _CreateItemScreenState extends State<CreateItemScreen> {
                           const SizedBox(width: 16),
                           Expanded(
                             child: DropdownButtonFormField<DamageType>(
-                              value: _selectedDamageType,
+                              initialValue: _selectedDamageType,
                               decoration: InputDecoration(
                                 labelText: l10n.damageType,
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
@@ -377,7 +377,7 @@ class _CreateItemScreenState extends State<CreateItemScreen> {
                           const SizedBox(width: 16),
                           Expanded(
                             child: DropdownButtonFormField<ArmorType>(
-                              value: _selectedArmorType,
+                              initialValue: _selectedArmorType,
                               decoration: InputDecoration(
                                 labelText: l10n.type,
                                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
@@ -393,13 +393,13 @@ class _CreateItemScreenState extends State<CreateItemScreen> {
                         title: Text(l10n.addDexModifier),
                         value: _addDexModifier,
                         onChanged: (v) => setState(() => _addDexModifier = v),
-                        activeColor: theme.colorScheme.primary,
+                        activeThumbColor: theme.colorScheme.primary,
                       ),
                       SwitchListTile(
                         title: Text(l10n.stealthDisadvantage),
                         value: _stealthDisadvantage,
                         onChanged: (v) => setState(() => _stealthDisadvantage = v),
-                        activeColor: theme.colorScheme.primary,
+                        activeThumbColor: theme.colorScheme.primary,
                       ),
                     ],
 

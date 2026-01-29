@@ -11,7 +11,7 @@ class ExpandableCharacterCard extends StatefulWidget {
   final VoidCallback onDicePressed;
   final ValueChanged<bool>? onDetailsToggled;
 
-  ExpandableCharacterCard({
+  const ExpandableCharacterCard({
     super.key,
     required this.character,
     required this.isExpanded,
@@ -100,8 +100,9 @@ class _ExpandableCharacterCardState extends State<ExpandableCharacterCard> with 
   String _formatValue(AppLocalizations l10n, String? value) {
     if (value == null) return '';
     var result = value.trim();
-    if (result.endsWith('cm')) result = result.replaceAll('cm', ' ${l10n.unitCm}');
-    else if (result.endsWith('kg')) result = result.replaceAll('kg', ' ${l10n.unitKg}');
+    if (result.endsWith('cm')) {
+      result = result.replaceAll('cm', ' ${l10n.unitCm}');
+    } else if (result.endsWith('kg')) result = result.replaceAll('kg', ' ${l10n.unitKg}');
     else if (result.endsWith('years')) result = result.replaceAll('years', ' ${l10n.ageYears}');
     else if (result.endsWith('lb') || result.endsWith('lbs')) result = result.replaceAll(RegExp(r'lbs?'), ' ${l10n.weightUnit}');
     else if (result.endsWith('ft')) result = result.replaceAll('ft', ' ${l10n.unitCm}');

@@ -9,12 +9,12 @@ class HpIncreaseStep extends StatefulWidget {
   final VoidCallback onAverage;
 
   const HpIncreaseStep({
-    Key? key,
+    super.key,
     required this.hitDie,
     required this.conMod,
     required this.onRoll,
     required this.onAverage,
-  }) : super(key: key);
+  });
 
   @override
   State<HpIncreaseStep> createState() => _HpIncreaseStepState();

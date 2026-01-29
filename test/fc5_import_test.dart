@@ -1,7 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:qd_and_d/core/services/fc5_parser.dart';
-import 'package:qd_and_d/core/models/character.dart';
-import 'package:hive/hive.dart';
 
 void main() {
   group('FC5 Import Tests', () {

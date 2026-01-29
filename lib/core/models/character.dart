@@ -250,12 +250,12 @@ class Character extends HiveObject {
         updatedAt = updatedAt ?? DateTime.now() {
           // Migration/Sync Logic:
           // If classes list is empty but we have legacy single class data, populate it.
-          if (this.classes.isEmpty && this.characterClass.isNotEmpty) {
+          if (this.classes.isEmpty && characterClass.isNotEmpty) {
             this.classes.add(CharacterClass(
-              id: this.characterClass.toLowerCase(),
-              name: this.characterClass,
-              level: this.level,
-              subclass: this.subclass,
+              id: characterClass.toLowerCase(),
+              name: characterClass,
+              level: level,
+              subclass: subclass,
               isPrimary: true,
             ));
           }

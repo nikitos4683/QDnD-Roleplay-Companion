@@ -11,13 +11,13 @@ class SummaryStep extends StatelessWidget {
   final VoidCallback onConfirm;
 
   const SummaryStep({
-    Key? key,
+    super.key,
     required this.character,
     required this.nextLevel,
     required this.hpIncrease,
     required this.newFeatures,
     required this.onConfirm,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

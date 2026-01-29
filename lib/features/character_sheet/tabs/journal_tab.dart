@@ -108,7 +108,7 @@ class _JournalTabState extends State<JournalTab> {
             padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
             child: Row(
               children: [
-                Icon(Icons.flag, size: 20, color: Colors.orange),
+                const Icon(Icons.flag, size: 20, color: Colors.orange),
                 const SizedBox(width: 8),
                 Text(
                   l10n.quests,

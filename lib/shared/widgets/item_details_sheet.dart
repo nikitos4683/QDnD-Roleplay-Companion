@@ -3,10 +3,6 @@ import 'package:qd_and_d/l10n/app_localizations.dart';
 import '../../core/models/item.dart';
 import '../../core/utils/item_utils.dart';
 
-import 'package:flutter/material.dart';
-import 'package:qd_and_d/l10n/app_localizations.dart';
-import '../../core/models/item.dart';
-import '../../core/utils/item_utils.dart';
 
 class ItemDetailsSheet extends StatelessWidget {
   final Item item;

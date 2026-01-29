@@ -102,8 +102,8 @@ class _InventoryTabState extends State<InventoryTab> {
       backgroundColor: Colors.transparent,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _navigateToCreateItem(context),
-        child: const Icon(Icons.add),
         tooltip: l10n.addItem,
+        child: const Icon(Icons.add),
       ),
       body: Column(
         children: [
