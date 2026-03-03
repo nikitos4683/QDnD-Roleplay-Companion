@@ -1,5 +1,7 @@
 <div align="center">
 
+### 🇺🇸 [English](README.md) | 🇷🇺 [Русский](README_RU.md)
+
 # 🎲 QD&D - Your Roleplay Companion
 
 ### Your faithful companion in the world of Dungeons & Dragons 5e
