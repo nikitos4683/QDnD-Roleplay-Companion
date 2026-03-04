@@ -64,4 +64,22 @@ class AbilityScores extends HiveObject {
       charisma: json['charisma'] ?? 10,
     );
   }
+
+  AbilityScores copyWith({
+    int? strength,
+    int? dexterity,
+    int? constitution,
+    int? intelligence,
+    int? wisdom,
+    int? charisma,
+  }) {
+    return AbilityScores(
+      strength: strength ?? this.strength,
+      dexterity: dexterity ?? this.dexterity,
+      constitution: constitution ?? this.constitution,
+      intelligence: intelligence ?? this.intelligence,
+      wisdom: wisdom ?? this.wisdom,
+      charisma: charisma ?? this.charisma,
+    );
+  }
 }

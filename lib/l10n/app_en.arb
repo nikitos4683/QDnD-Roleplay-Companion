@@ -1615,6 +1615,18 @@
   "@next": {
     "description": "No description provided"
   },
+  "abilityScoreImprovementDesc": "Ability Score Improvement",
+  "@abilityScoreImprovementDesc": {
+    "description": "No description provided"
+  },
+  "allocateAsiPoints": "Distribute 2 points among your ability scores.",
+  "@allocateAsiPoints": {
+    "description": "No description provided"
+  },
+  "maxScoreReached": "Maximum score reached",
+  "@maxScoreReached": {
+    "description": "No description provided"
+  },
   "back": "Back",
   "@back": {
     "description": "No description provided"

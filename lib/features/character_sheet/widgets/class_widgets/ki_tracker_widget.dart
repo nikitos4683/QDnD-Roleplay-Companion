@@ -231,11 +231,13 @@ class _KiTrackerWidgetState extends State<KiTrackerWidget> {
               const SizedBox(height: 12),
             ],
             _buildBasicStatsPanel(context, colorScheme, locale, l10n, dieSize),
-            const SizedBox(height: 12),
-            _buildKiDashboard(
-                context, colorScheme, locale, pool.currentUses, maxKi),
-            const SizedBox(height: 12),
-            _buildQuickActions(context, colorScheme, locale, maxKi),
+            if (widget.kiFeature.id != 'ki_fallback') ...[
+              const SizedBox(height: 12),
+              _buildKiDashboard(
+                  context, colorScheme, locale, pool.currentUses, maxKi),
+              const SizedBox(height: 12),
+              _buildQuickActions(context, colorScheme, locale, maxKi),
+            ],
           ],
         ),
       ),

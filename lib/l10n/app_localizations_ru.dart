@@ -1202,6 +1202,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get next => 'Далее';
 
   @override
+  String get abilityScoreImprovementDesc => 'Улучшение характеристик';
+
+  @override
+  String get allocateAsiPoints =>
+      'Распределите 2 очка между вашими характеристиками.';
+
+  @override
+  String get maxScoreReached => 'Достигнут максимум';
+
+  @override
   String get back => 'Назад';
 
   @override

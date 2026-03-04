@@ -2405,6 +2405,24 @@ abstract class AppLocalizations {
   /// No description provided
   ///
   /// In en, this message translates to:
+  /// **'Ability Score Improvement'**
+  String get abilityScoreImprovementDesc;
+
+  /// No description provided
+  ///
+  /// In en, this message translates to:
+  /// **'Distribute 2 points among your ability scores.'**
+  String get allocateAsiPoints;
+
+  /// No description provided
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum score reached'**
+  String get maxScoreReached;
+
+  /// No description provided
+  ///
+  /// In en, this message translates to:
   /// **'Back'**
   String get back;
 

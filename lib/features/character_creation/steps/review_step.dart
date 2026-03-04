@@ -106,6 +106,16 @@ class _ReviewStepState extends State<ReviewStep> {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
 
+    final allProficientSkills = <String>{};
+    allProficientSkills.addAll(state.selectedSkills);
+    if (state.selectedBackground != null) {
+      allProficientSkills.addAll(state.selectedBackground!.skillProficiencies);
+    }
+    if (state.selectedRace != null) {
+      allProficientSkills.addAll(
+          state.selectedRace!.proficiencies.map((s) => s.toLowerCase()));
+    }
+
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
       child: Column(
@@ -119,9 +129,10 @@ class _ReviewStepState extends State<ReviewStep> {
           _buildCombatStats(context, state, theme, l10n),
           const SizedBox(height: 16),
           _buildAbilityScoresGrid(context, state, theme, l10n),
-          if (state.selectedSkills.isNotEmpty) ...[
+          if (allProficientSkills.isNotEmpty) ...[
             const SizedBox(height: 24),
-            _buildSkillsSection(context, state, theme, l10n),
+            _buildSkillsSection(
+                context, state, allProficientSkills, theme, l10n),
           ],
           _buildDynamicFeaturesSection(context, state, locale, theme, l10n),
           const SizedBox(height: 32),
@@ -760,12 +771,12 @@ class _ReviewStepState extends State<ReviewStep> {
   }
 
   Widget _buildSkillsSection(BuildContext context, CharacterCreationState state,
-      ThemeData theme, AppLocalizations l10n) {
+      Set<String> allProficientSkills, ThemeData theme, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          '${l10n.skillProficiencies} (${state.selectedSkills.length})',
+          '${l10n.skillProficiencies} (${allProficientSkills.length})',
           style: theme.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.bold,
             color: theme.colorScheme.primary,
@@ -775,7 +786,7 @@ class _ReviewStepState extends State<ReviewStep> {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: state.selectedSkills.map((skill) {
+          children: allProficientSkills.map((skill) {
             final isExpertise = state.selectedExpertise.contains(skill);
             return Chip(
               label: Text(_getLocalizedSkill(l10n, skill)),

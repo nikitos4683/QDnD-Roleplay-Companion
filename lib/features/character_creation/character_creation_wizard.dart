@@ -275,6 +275,21 @@ class _CharacterCreationWizardState extends State<CharacterCreationWizard> {
         maxPreparedSpells = (abilityMod + 1).clamp(1, 100);
       }
 
+      // 4.5 Aggregate all proficient skills
+      final allProficientSkills = <String>{};
+      allProficientSkills.addAll(_state.selectedSkills);
+      if (_state.selectedBackground != null) {
+        allProficientSkills
+            .addAll(_state.selectedBackground!.skillProficiencies);
+      }
+      if (_state.selectedRace != null) {
+        // Assume racial proficiencies often correspond to skills
+        // We might want to filter or normalize, but for now we'll add them
+        // ensuring they match skill keys if possible
+        allProficientSkills.addAll(
+            _state.selectedRace!.proficiencies.map((s) => s.toLowerCase()));
+      }
+
       // 5. Create character with all calculated values
       final character = Character(
         id: const Uuid().v4(),
@@ -301,7 +316,7 @@ class _CharacterCreationWizardState extends State<CharacterCreationWizard> {
         armorClass: 10 + dexMod,
         speed: _state.selectedRace!.speed,
         initiative: dexMod,
-        proficientSkills: _state.selectedSkills,
+        proficientSkills: allProficientSkills.toList(),
         expertSkills: _state.selectedExpertise.toList(),
         favoredEnemies: _state.selectedFeatureOptions['favored_enemy'] != null
             ? [_state.selectedFeatureOptions['favored_enemy']!]

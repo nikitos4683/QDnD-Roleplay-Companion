@@ -10,6 +10,7 @@ import '../../../core/models/spell_slots_table.dart';
 import '../../../core/utils/localization_helper.dart';
 import 'steps/hp_increase_step.dart';
 import 'steps/features_step.dart';
+import 'steps/asi_step.dart';
 import 'steps/summary_step.dart';
 
 class LevelUpScreen extends StatefulWidget {
@@ -47,6 +48,9 @@ class _LevelUpScreenState extends State<LevelUpScreen> {
   // Selections
   final Map<String, String> _selectedOptions = {};
   final Set<String> _selectedExpertise = {};
+
+  bool _hasAsi = false;
+  Map<String, int> _asiAllocations = {};
 
   bool _isLoading = true;
 
@@ -172,6 +176,8 @@ class _LevelUpScreenState extends State<LevelUpScreen> {
     }
 
     _newFeatures = allFeatures;
+    _hasAsi =
+        _newFeatures.any((f) => f.id.contains('ability-score-improvement'));
 
     // 5. Calculate Spell Slots
     if (_classData.spellcasting != null) {
@@ -258,6 +264,32 @@ class _LevelUpScreenState extends State<LevelUpScreen> {
     char.currentHp += _hpIncrease;
     char.hitDice[0]++; // Add one hit die
     char.maxHitDice = _nextLevel;
+
+    // 2.5 Apply Ability Score Improvements and Retroactive HP
+    if (_hasAsi && _asiAllocations.isNotEmpty) {
+      final oldConMod = char.abilityScores.constitutionModifier;
+
+      char.abilityScores = char.abilityScores.copyWith(
+        strength:
+            char.abilityScores.strength + (_asiAllocations['strength'] ?? 0),
+        dexterity:
+            char.abilityScores.dexterity + (_asiAllocations['dexterity'] ?? 0),
+        constitution: char.abilityScores.constitution +
+            (_asiAllocations['constitution'] ?? 0),
+        intelligence: char.abilityScores.intelligence +
+            (_asiAllocations['intelligence'] ?? 0),
+        wisdom: char.abilityScores.wisdom + (_asiAllocations['wisdom'] ?? 0),
+        charisma:
+            char.abilityScores.charisma + (_asiAllocations['charisma'] ?? 0),
+      );
+
+      final newConMod = char.abilityScores.constitutionModifier;
+      if (newConMod > oldConMod) {
+        final hpBuf = (newConMod - oldConMod) * char.level;
+        char.maxHp += hpBuf;
+        char.currentHp += hpBuf;
+      }
+    }
 
     // 3. Apply Choices
     if (_selectedOptions.containsKey('subclass')) {
@@ -528,6 +560,14 @@ class _LevelUpScreenState extends State<LevelUpScreen> {
             },
             onNext: _nextPage,
           ),
+          if (_hasAsi)
+            AsiStep(
+              currentScores: widget.character.abilityScores,
+              onAllocationChanged: (allocs) {
+                setState(() => _asiAllocations = allocs);
+              },
+              onNext: _nextPage,
+            ),
           SummaryStep(
             character: widget.character,
             nextLevel: _nextLevel,

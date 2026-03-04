@@ -1207,6 +1207,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get next => 'Next';
 
   @override
+  String get abilityScoreImprovementDesc => 'Ability Score Improvement';
+
+  @override
+  String get allocateAsiPoints =>
+      'Distribute 2 points among your ability scores.';
+
+  @override
+  String get maxScoreReached => 'Maximum score reached';
+
+  @override
   String get back => 'Back';
 
   @override
