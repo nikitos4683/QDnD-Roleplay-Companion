@@ -1,4 +1,4 @@
-name: Manual Release (Android & Web)
+name: QDnD Release (Android & Web)
 
 on:
   workflow_dispatch:
